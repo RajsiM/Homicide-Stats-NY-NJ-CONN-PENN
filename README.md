@@ -1,4 +1,4 @@
-# Homicide-Stats-NY-NJ-CONN-PENN
+# Tableau Homicide-Stats-NY-NJ-CONN-PENN
 ### An interactive visualisation of Homicide Statistics in the states of New York, New Jersey, Connecticut, and Pennsylvania.
 
 ##### Dataset and Data Dictionary were retrieved from http://www.murderdata.org/p/data-docs.html and is entitled "The Supplementary Homicide Report".
