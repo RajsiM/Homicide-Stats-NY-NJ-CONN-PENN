@@ -1,0 +1,61 @@
+---
+title: "Homocide Data"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+```{r}
+Murderdataset <- read.csv("SHR76_19.csv")
+```
+
+```{r}
+View(Murderdataset)
+str(Murderdataset)
+```
+
+```{r}
+summary(Murderdataset)
+```
+```{r}
+Murderdataset01 = Murderdataset[with(Murderdataset, !((Year >= 1976 & Year <= 2008) | (Year > 2018 & Year <= 2019))), ]
+View(Murderdataset01)
+```
+
+```{r}
+Murderdataset01 = subset(Murderdataset01, select = -c(Incident, StateName, Ori, Subcircum, ActionType, FileDate, Agentype, Source) )
+```
+
+
+```{r}
+Murderdataset01 <- Murderdataset01 %>% mutate(OffAge = replace(OffAge, OffAge > 100, NA))
+Murderdataset01 <- Murderdataset01 %>% mutate(VicAge = replace(VicAge, VicAge > 100, NA))
+
+summary(Murderdataset01)
+```
+
+```{r}
+Murderdataset02 <- Murderdataset01 %>%
+filter(!is.na(VicAge) & !is.na(OffAge))
+```
+
+```{r}
+Murderdataset02$Country <- "USA"
+```
+
+```{r}
+View(Murderdataset02)
+
+summary(Murderdataset02)
+
+str(Murderdataset02)
+```
+
+```{r}
+write.csv(Murderdataset02, "C:\\Desktop\\UNIVERSITY LIFE\\Brunel\\Term 2\\CS5703\\Coursework\\Murder Dataset 02.csv", row.names = FALSE)
+```
+
+
